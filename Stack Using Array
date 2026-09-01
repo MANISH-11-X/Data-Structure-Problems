@@ -1,0 +1,82 @@
+#include<stdio.h>
+#define max 10
+
+int top = -1;
+int stack[max];
+
+int isfull(){
+    if(top == max - 1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+int isempty(){
+    if(top == -1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+void push(){
+    if(isfull()){
+        printf("Stack is overflow!");
+    }
+    else{
+        int n;
+        printf("Enter element to insert :");
+        scanf("%d",&n);
+
+        top++;
+        stack[top] = n;
+    }
+}
+
+void pop(){
+    if(isempty()){
+        printf("Stack is underflow!");
+    }
+    else{
+        printf("Deleted Element is :%d\n",stack[top]);
+
+        top--;
+    }
+}
+
+void display(){
+    if(isempty()){
+        printf("Stack is empty!");
+    }
+    else{
+        for(int i = top; i >= 0; i--){
+            printf("%d\n",stack[i]);
+        }
+    }
+}
+
+int main(){
+    int choice;
+
+    while(1){
+        printf("1.Push\n");
+        printf("2.Pop\n");
+        printf("3.Display\n");
+        printf("Enter above operation :");
+        scanf("%d",&choice);
+
+        switch(choice){
+            case 1: push();
+            break;
+            case 2: pop();
+            break;
+            case 3: display();
+            break;
+            default:
+            printf("You entered wrong operation");
+        }
+    }
+}
